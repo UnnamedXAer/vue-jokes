@@ -22,12 +22,12 @@ html {
 
 .alert {
 	padding: 1rem;
-	border: 1px solid #cfcfcf;
+	border: 0.2rem solid #cfcfcf;
 }
 
 .alert-danger {
-	border: 1px solid var(--danger);
-	background-color: rgba(var(--danger), 0.7);
+	border: 0.2rem solid var(--danger);
+	background-color: rgba(var(--danger-rgb), 0.2);
 }
 
 .jokes {
