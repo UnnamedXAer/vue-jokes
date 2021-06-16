@@ -1,0 +1,47 @@
+:root {
+	--primary: rgb(206, 4, 189);
+	--danger: #e41b00;
+	--danger-rgb: 228, 27, 0;
+}
+
+body,
+html {
+	padding: 0;
+	margin: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#root {
+	margin: 0 auto;
+	max-width: 1080px;
+	width: 100%;
+}
+
+.alert {
+	padding: 1rem;
+	border: 1px solid #cfcfcf;
+}
+
+.alert-danger {
+	border: 1px solid var(--danger);
+	background-color: rgba(var(--danger), 0.7);
+}
+
+.jokes {
+	padding: 1rem;
+	width: 100%;
+}
+
+.jokes_list {
+	display: flex;
+	flex-direction: column;
+}
+
+@media screen and (min-width: 900px) {
+	.jokes_list {
+		flex-direction: row;
+	}
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="styles.css">
+
+	<title>Vue - Jokes</title>
+</head>
+
+<body>
+	<div id="root">
+		<h1>{{this.title}}</h1>
+		<jokes>
+		</jokes>
+	</div>
+
+
+	<script type="text/x-template" id="tmpl-alert-panel">
+		<div :class="'alert' +(type ? ' alert-'+type : '')" role="alert">{{msg}}</div>
+	</script>
+
+	<script type="text/x-template" id="tmpl-joke">
+		<article class="joke">
+			<h3>{{this.joke.joke}}</h3>
+		</article>
+	</script>
+
+	<script type="text/x-template" id="tmpl-jokes">
+		<main class="jokes">
+			<alert-panel type="danger" msg="fetchError" />
+			<section class="jokes_list">
+				<joke-card v-for="joke in jokes" :key="joke.id" :joke="joke" />
+			</section>
+		</main>
+	</script>
+
+
+
+	<script src="./api.js"></script>
+	<script src="./vue.js"></script>
+	<script src="./main.js"></script>
+</body>
+
+</html>
