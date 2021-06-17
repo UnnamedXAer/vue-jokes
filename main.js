@@ -6,17 +6,33 @@ var alertPanel = Vue.component('alert-panel', {
 	}
 });
 
+var svgArrowUp = Vue.component('svg-arrow-up', {
+	template: '#tmpl-svg-arrow-up'
+});
+
+var JokesActionsBtn = {
+	template: '#tmpl-jokes-actions-btn'
+};
+
+var JokesActions = {
+	template: '#tmpl-jokes-actions',
+	components: {
+		'actions-btn': JokesActionsBtn
+	}
+};
+
 var JokeComponent = {
 	props: {
-		joke: Object,
-		required: true
+		joke: { type: Object, required: true },
+		idx: Number
 	},
 	template: `#tmpl-joke`
 };
 
 var JokesComponent = {
 	components: {
-		'joke-card': JokeComponent
+		'joke-card': JokeComponent,
+		'joke-actions': JokesActions
 	},
 	data() {
 		return {

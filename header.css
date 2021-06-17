@@ -1,0 +1,40 @@
+.header {
+	width: 100%;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	position: relative;
+	z-index: 10;
+}
+
+.header::after {
+	content: '';
+	z-index: -1;
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 0;
+	right: 0;
+
+	border-color: rgba(165, 42, 42, 0.521);
+	border-width: 2rem;
+	border-style: solid;
+	border-left-width: 3rem;
+	border-top-width: 3rem;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+
+
+
+	background-color: rgba(165, 42, 42, 0.295);
+}
+
+.header h1 {
+	margin-block-start: 0;
+}
+
+@media screen and (min-width: 900px) {
+	.header {
+		padding-left: 3rem;
+		padding-right: 3rem;
+	}
+}

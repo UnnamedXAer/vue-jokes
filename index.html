@@ -7,37 +7,61 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="action-btn.css">
+	<link rel="stylesheet" href="header.css">
 
 	<title>Vue - Jokes</title>
 </head>
 
 <body>
 	<div id="root">
-		<h1>{{this.title}}</h1>
-		<jokes>
-		</jokes>
+		<header class="header">
+			<h1>{{this.title}}</h1>
+		</header>
+		<div class="root__container">
+			<jokes />
+		</div>
 	</div>
-
 
 	<script type="text/x-template" id="tmpl-alert-panel">
 		<div :class="'alert' +(type ? ' alert-'+type : '')" role="alert">{{msg}}</div>
 	</script>
 
-	<script type="text/x-template" id="tmpl-joke">
-		<article class="joke">
-			<h3>{{this.joke.joke}}</h3>
-		</article>
-	</script>
-
 	<script type="text/x-template" id="tmpl-jokes">
 		<main class="jokes">
-			<alert-panel type="danger" msg="fetchError" />
+			<alert-panel v-if="fetchError !== null" type="danger" msg="fetchError" />
 			<section class="jokes_list">
-				<joke-card v-for="joke in jokes" :key="joke.id" :joke="joke" />
+				<joke-card v-for="(joke) in jokes" :key="joke.id" :joke="joke" />
 			</section>
+			<joke-actions />
 		</main>
 	</script>
 
+	<script type="text/x-template" id="tmpl-joke">
+		<article class="joke">
+			<p class="joke__text">{{joke.joke}}</p>
+		</article>
+	</script>
+
+	<script type="text/x-template" id="tmpl-jokes-actions-btn">
+		<div class="action_btn" role="button" tabIndex="0">
+			<div class="action_btn__inset">
+				<svg-arrow-up/>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/x-template" id="tmpl-jokes-actions">
+		<section class="jokes_actions">
+			<actions-btn />
+			<actions-btn />
+		</section>
+	</script>
+
+
+	<script type="text/x-template" id="tmpl-svg-arrow-up">
+		<svg id="svg-arrow-up" data-name="svg-arrow-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115.4 122.88"><path d="M24.94,67.88A14.66,14.66,0,0,1,4.38,47L47.83,4.21a14.66,14.66,0,0,1,20.56,0L111,46.15A14.66,14.66,0,0,1,90.46,67.06l-18-17.69-.29,59.17c-.1,19.28-29.42,19-29.33-.25L43.14,50,24.94,67.88Z"/></svg>
+	</script>
 
 
 	<script src="./api.js"></script>
