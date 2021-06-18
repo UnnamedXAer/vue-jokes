@@ -49,73 +49,35 @@ html {
 	flex-direction: column;
 }
 
-.joke {
-	z-index: 0;
-	padding: 1rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	border: 1px solid #cccfff;
-	margin: 1rem;
-	box-shadow: 1px 4px 8px #cccfff;
-	position: relative;
-}
-
-.joke:hover {
-	transform: scale(1.02);
-	transition: 200ms ease-out;
-}
-
-.joke::after {
-	content: '';
-	z-index: -1;
-	background-image: url('https://random.imagecdn.app/400/400');
-	background-repeat: no-repeat;
-	background-size: cover;
-	position: absolute;
-	opacity: 0.3;
-	top: 1.3rem;
-	left: 1.3rem;
-	right: 1.3rem;
-	bottom: 1.3rem;
-}
-
-.joke:first-of-type::after {
-	background-image: url('https://random.imagecdn.app/400/401');
-}
-
-.joke__text {
-	text-align: center;
-	font-size: 5vw;
-	font-weight: 500;
-	font-family: 'Baloo Tammudu 2', cursive;
-	line-height: 1.2em;
-	padding: 1rem;
-}
-
-.jokes_actions {
+.jokes__actions {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	align-items: center;
+	width: 100%;
 }
-@media screen and (min-width: 600px) {
-	.joke__text {
-		font-size: 4vw;
-	}
+
+.jokes__actions .action_btn:last-of-type svg {
+	transform: rotate(180deg);
 }
 
 @media screen and (min-width: 900px) {
 	.jokes_list {
 		flex-direction: row;
+		position: relative;
+		padding-bottom: 7rem;
 	}
 
-	.joke__text {
-		font-size: 3vw;
+	.jokes__actions {
+		position: absolute;
+		bottom: 0rem;
 	}
-}
 
-@media screen and (min-width: 1300px) {
-	.joke__text {
-		font-size: 2.5rem;
+	.jokes__actions .action_btn:first-of-type svg {
+		transform: rotate(-30deg);
+	}
+
+	.jokes__actions .action_btn:last-of-type svg {
+		transform: rotate(30deg);
 	}
 }

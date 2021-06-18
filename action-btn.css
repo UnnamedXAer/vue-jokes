@@ -1,6 +1,6 @@
 .action_btn {
-	width: 6rem;
-	height: 6rem;
+	width: 4rem;
+	height: 4rem;
 	margin-right: 0.5rem;
 	margin-left: 0.5rem;
 	box-shadow: 2px 2px 1rem rgba(var(--primary-rgb), 0.5);
@@ -14,9 +14,9 @@
 
 .action_btn__inset {
 	padding: 0.6rem;
-	width: 4rem !important;
-	height: 4rem !important;
-	background-color: rgba(var(--primary-rgb), 0.4);
+	width: 3rem !important;
+	height: 3rem !important;
+	background-color: rgba(var(--primary-rgb), 0.47);
 	box-shadow: 0px 0px 1.8rem var(--primary);
 	border-radius: 50%;
 }
@@ -31,7 +31,7 @@
 }
 .action_btn:active > .action_btn__inset {
 	transform: scale(0.85);
-	transition: 50ms ;
+	transition: 50ms;
 	box-shadow: none;
 	background-color: rgba(139, 146, 245, 0.01);
 }
@@ -52,10 +52,21 @@
 	fill: rgba(143, 105, 146, 0.95);
 }
 
-.action_btn:first-of-type svg {
-	transform: rotate(-40deg);
+@media screen and (min-width: 900px) {
+	.action_btn {
+		width: 6rem;
+		height: 6rem;
+		margin-right: 1rem;
+		margin-left: 1rem;
+	}
+	.action_btn__inset {
+		width: 4rem !important;
+		height: 4rem !important;
+	}
 }
 
-.action_btn:last-of-type svg {
-	transform: rotate(40deg);
+.action_btn.disabled {
+	filter: grayscale(1);
+	/* pointer-events:none; */
+	cursor: not-allowed;
 }

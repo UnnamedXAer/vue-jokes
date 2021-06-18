@@ -1,0 +1,61 @@
+.joke {
+	z-index: 0;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+	justify-content: stretch;
+	border: 1px solid #cccfff;
+	margin: 1rem;
+	box-shadow: 1px 4px 8px #cccfff;
+	position: relative;
+}
+
+.joke.accepted {
+	border: 5px solid rgb(13, 170, 13);
+}
+
+.joke::after {
+	content: '';
+	z-index: -1;
+	background-image: url('http://random.imagecdn.app/401/401');
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+	opacity: 0.3;
+	top: 0rem;
+	left: 0rem;
+	right: 0rem;
+	bottom: 0rem;
+}
+
+.joke:first-of-type::after {
+	background-image: url('https://random.imagecdn.app/400/400');
+}
+
+.joke__text {
+	text-align: center;
+	font-size: 5vw;
+	font-weight: 500;
+	font-family: 'Baloo Tammudu 2', cursive;
+	line-height: 1.2em;
+	padding: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+	.joke__text {
+		font-size: 4vw;
+	}
+}
+
+@media screen and (min-width: 900px) {
+	.joke__text {
+		font-size: 3vw;
+	}
+}
+
+@media screen and (min-width: 1300px) {
+	.joke__text {
+		font-size: 2.5rem;
+	}
+}

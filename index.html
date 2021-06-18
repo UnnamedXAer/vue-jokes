@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="action-btn.css">
 	<link rel="stylesheet" href="header.css">
+	<link rel="stylesheet" href="joke.css">
 
 	<title>Vue - Jokes</title>
 </head>
@@ -27,37 +28,40 @@
 		<div :class="'alert' +(type ? ' alert-'+type : '')" role="alert">{{msg}}</div>
 	</script>
 
+	<script type="text/x-template" id="tmpl-loading-indicator">
+		<div class="loading-indicator">
+			Just wait!
+		</div>
+	</script>
+
 	<script type="text/x-template" id="tmpl-jokes">
 		<main class="jokes">
 			<alert-panel v-if="fetchError !== null" type="danger" msg="fetchError" />
-			<section class="jokes_list">
-				<joke-card v-for="(joke) in jokes" :key="joke.id" :joke="joke" />
+			<loading-indicator v-if="loading" />
+			<section v-if="jokes && jokes.length >= 2" class="jokes_list">
+				<joke-card :joke="jokes[0]" :accepted="acceptedJokeIdx === 0" />
+				<div class="jokes__actions">
+					<action-btn :disabled="actionsDisabled" @click.native="acceptJoke(0)" />
+					<action-btn :disabled="actionsDisabled" @click.native="acceptJoke(1)" />
+				</div>
+				<joke-card :joke="jokes[1]" :accepted="acceptedJokeIdx === 1" />
 			</section>
-			<joke-actions />
 		</main>
 	</script>
 
 	<script type="text/x-template" id="tmpl-joke">
-		<article class="joke">
+		<article class="joke" :class="accepted">
 			<p class="joke__text">{{joke.joke}}</p>
 		</article>
 	</script>
 
-	<script type="text/x-template" id="tmpl-jokes-actions-btn">
-		<div class="action_btn" role="button" tabIndex="0">
+	<script type="text/x-template" id="tmpl-joke-action-btn">
+		<div :class="['action_btn', disabled?'disabled':'']" role="button" tabIndex="0">
 			<div class="action_btn__inset">
 				<svg-arrow-up/>
 			</div>
 		</div>
 	</script>
-
-	<script type="text/x-template" id="tmpl-jokes-actions">
-		<section class="jokes_actions">
-			<actions-btn />
-			<actions-btn />
-		</section>
-	</script>
-
 
 	<script type="text/x-template" id="tmpl-svg-arrow-up">
 		<svg id="svg-arrow-up" data-name="svg-arrow-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115.4 122.88"><path d="M24.94,67.88A14.66,14.66,0,0,1,4.38,47L47.83,4.21a14.66,14.66,0,0,1,20.56,0L111,46.15A14.66,14.66,0,0,1,90.46,67.06l-18-17.69-.29,59.17c-.1,19.28-29.42,19-29.33-.25L43.14,50,24.94,67.88Z"/></svg>
