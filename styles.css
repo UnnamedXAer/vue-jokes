@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;500&display=swap');
 
 :root {
@@ -6,6 +7,8 @@
 	--danger: #e41b00;
 	--danger-rgb: 228, 27, 0;
 	--max-width: 1080px;
+	--img0: url('http://random.imagecdn.app/400/400');
+	--img1: url('http://random.imagecdn.app/400/401');
 }
 
 body,
@@ -37,6 +40,10 @@ html {
 .alert-danger {
 	border: 0.2rem solid var(--danger);
 	background-color: rgba(var(--danger-rgb), 0.2);
+}
+
+.header {
+	font-family: 'Kirang Haerang', cursive;
 }
 
 .jokes {

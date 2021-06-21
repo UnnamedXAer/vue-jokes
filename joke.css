@@ -1,4 +1,5 @@
 .joke {
+	flex: 1;
 	z-index: 0;
 	padding: 1rem;
 	display: flex;
@@ -12,13 +13,29 @@
 }
 
 .joke.accepted {
-	border: 5px solid rgb(13, 170, 13);
+	animation-name: accept;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+}
+
+.joke.accepted::before {
+}
+
+@keyframes accept {
+	0% {
+		background-color: transparent;
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.8;
+		background-color: rgba(0, 128, 0, 0.6);
+	}
 }
 
 .joke::after {
 	content: '';
 	z-index: -1;
-	background-image: url('http://random.imagecdn.app/401/401');
+	background-image: var(--img0);
 	background-repeat: no-repeat;
 	background-size: cover;
 	position: absolute;
@@ -29,8 +46,8 @@
 	bottom: 0rem;
 }
 
-.joke:first-of-type::after {
-	background-image: url('https://random.imagecdn.app/400/400');
+.joke:first-of-type:after {
+	background-image: var(--img1);
 }
 
 .joke__text {

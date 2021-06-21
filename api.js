@@ -1,5 +1,5 @@
 function fetchJokes() {
-	if (Vue.config.devtools) {
+	if (window.forceFetch !== true && Vue.config.devtools) {
 		return new Promise((resolve) => {
 			setTimeout(() => {
 				resolve([

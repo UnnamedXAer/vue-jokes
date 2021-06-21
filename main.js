@@ -27,9 +27,9 @@ var JokeComponent = {
 		accepted: Boolean
 	},
 	template: '#tmpl-joke',
-	watch:{
-		accepted(val){
-			console.log("accepted", val, arguments);
+	watch: {
+		accepted(val) {
+			console.log('accepted', val, arguments);
 		}
 	}
 };
@@ -78,17 +78,19 @@ var JokesComponent = {
 			}
 			console.log('joke accepted: ', idx);
 			this.acceptedJokeIdx = idx;
+			// wait at least for the animation to finish or until new jokes are fetched.
 			Promise.all([this.acceptAnimationTimeout(), this.getNextJokes()])
 				.then((results) => {
 					const nextJokes = results[1];
 					if (!Array.isArray(nextJokes) || nextJokes.length < 2) {
 						throw new Error('Sorry, could not fetch next jokes 😓');
 					}
+					updateJokeImgs(++this.jokesNo);
 					this.jokes = [...nextJokes];
 					this.acceptedJokeIdx = -1;
 				})
 				.catch((err) => {
-					this.fetchError = err;
+					this.fetchError = err.message || err.toString();
 				})
 				.finally(() => {
 					this.fetchingNext = false;
@@ -103,7 +105,7 @@ var JokesComponent = {
 		acceptAnimationTimeout() {
 			return new Promise((resolve) => {
 				setTimeout(() => {
-					this.acceptedJokeIdx = -1;
+					// just waiting for the css animation to finish.
 					resolve();
 				}, 500);
 			});

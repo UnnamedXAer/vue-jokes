@@ -36,7 +36,7 @@
 
 	<script type="text/x-template" id="tmpl-jokes">
 		<main class="jokes">
-			<alert-panel v-if="fetchError !== null" type="danger" msg="fetchError" />
+			<alert-panel v-if="fetchError !== null" type="danger" :msg="fetchError" />
 			<loading-indicator v-if="loading" />
 			<section v-if="jokes && jokes.length >= 2" class="jokes_list">
 				<joke-card :joke="jokes[0]" :accepted="acceptedJokeIdx === 0" />
@@ -50,7 +50,7 @@
 	</script>
 
 	<script type="text/x-template" id="tmpl-joke">
-		<article class="joke" :class="accepted">
+		<article class="joke" :class="{accepted}">
 			<p class="joke__text">{{joke.joke}}</p>
 		</article>
 	</script>
@@ -68,6 +68,7 @@
 	</script>
 
 
+	<script src="./imgs.js"></script>
 	<script src="./api.js"></script>
 	<script src="./vue.js"></script>
 	<script src="./main.js"></script>
