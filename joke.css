@@ -18,9 +18,6 @@
 	animation-fill-mode: forwards;
 }
 
-.joke.accepted::before {
-}
-
 @keyframes accept {
 	0% {
 		background-color: transparent;

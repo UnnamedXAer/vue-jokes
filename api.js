@@ -24,11 +24,19 @@ function fetchJokes() {
 		.then((res) => res.json())
 		.then((json) => {
 			if (json.type !== 'success') {
-				throw new Error(
-					'Sadly 😥, we could not get the jokes. Please try again later.'
-				);
+				throw new Error('response json type is not success\n');
+			}
+
+			if (!Array.isArray(json.value) || json.value.length < 2) {
+				throw new Error('incorrect response in jokes request');
 			}
 
 			return json.value;
+		})
+		.catch((err) => {
+			console.log(err);
+			throw new Error(
+				'Sadly 😥, we could not get the jokes. Please try again later.'
+			);
 		});
 }

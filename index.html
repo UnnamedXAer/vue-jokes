@@ -5,11 +5,24 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#fafafa">
+	<meta name="description" content="Author: UnnamedXAer; Pages displays random jokes with ability to choose better.">
+
+	<link rel="preload" href="https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap" as="style" >
+	<link rel="preload" href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;500&display=swap" as="style" >
 
 	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="action-btn.css">
 	<link rel="stylesheet" href="header.css">
 	<link rel="stylesheet" href="joke.css">
+
+	<link rel="modulepreload" href="components.js" as="script">
+	<link rel="modulepreload" href="vue.min.js" as="script">
+	
+	<link rel="preconnect" href="http://random.imagecdn.app/400/400" crossorigin="anonymous">
+	<link rel="preconnect" href="https://images.unsplash.com" crossorigin="anonymous">
+
+	<link rel="preconnect" href="http://api.icndb.com" crossorigin="anonymous">
 
 	<title>Vue - Jokes</title>
 </head>
@@ -25,7 +38,7 @@
 	</div>
 
 	<script type="text/x-template" id="tmpl-alert-panel">
-		<div :class="'alert' +(type ? ' alert-'+type : '')" role="alert">{{msg}}</div>
+		<article :class="'alert' +(type ? ' alert-'+type : '')" role="alert">{{msg}}</article>
 	</script>
 
 	<script type="text/x-template" id="tmpl-loading-indicator">
@@ -41,8 +54,8 @@
 			<section v-if="jokes && jokes.length >= 2" class="jokes_list">
 				<joke-card :joke="jokes[0]" :accepted="acceptedJokeIdx === 0" />
 				<div class="jokes__actions">
-					<action-btn :disabled="actionsDisabled" @click.native="acceptJoke(0)" />
-					<action-btn :disabled="actionsDisabled" @click.native="acceptJoke(1)" />
+					<action-btn :disabled="actionsDisabled" @click.native="acceptJoke(0)" aria-label="accept first joke" />
+					<action-btn :disabled="actionsDisabled" @click.native="acceptJoke(1)" aria-label="accept second joke" />
 				</div>
 				<joke-card :joke="jokes[1]" :accepted="acceptedJokeIdx === 1" />
 			</section>
@@ -56,7 +69,7 @@
 	</script>
 
 	<script type="text/x-template" id="tmpl-joke-action-btn">
-		<div :class="['action_btn', disabled?'disabled':'']" role="button" tabIndex="0">
+		<div :class="['action_btn', disabled?'disabled':'']" role="button" tabIndex="0" >
 			<div class="action_btn__inset">
 				<svg-arrow-up/>
 			</div>
@@ -68,10 +81,9 @@
 	</script>
 
 
-	<script src="./imgs.js"></script>
-	<script src="./api.js"></script>
-	<script src="./vue.js"></script>
-	<script src="./main.js"></script>
+	<script src="imgs.js"></script>
+	<script src="api.js"></script>
+	<script src="main.js" async></script>
 </body>
 
 </html>
